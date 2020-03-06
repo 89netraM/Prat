@@ -1,3 +1,3 @@
 # Prat
 
-A multipurpos parsing library for C#
+Multipurpose parsing library in C#
