@@ -9,5 +9,12 @@
 		<PackageId>MoreTec_Prat</PackageId>
 		<Product>Prat</Product>
 		<Version>1.0.0</Version>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageTags>parsing parser</PackageTags>
+		<Title>Prat</Title>
+		<RepositoryUrl>https://github.com/89netraM/Prat.git</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<Description>Multipurpose parsing library in C#</Description>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 	</PropertyGroup>
 </Project>
