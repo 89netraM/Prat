@@ -13,9 +13,9 @@ namespace Prat
 			SecondFactory = secondFactory ?? throw new ArgumentNullException(nameof(secondFactory));
 		}
 
-		public (B, string)? Parse(string s) => First.Value.Parse(s) switch
+		public (B, ReadOnlyMemory<char>)? Parse(ReadOnlyMemory<char> s) => First.Value.Parse(s) switch
 		{
-			(A v, string rest) => SecondFactory.Value(v).Parse(rest),
+			(A v, ReadOnlyMemory<char> rest) => SecondFactory.Value(v).Parse(rest),
 			_ => null
 		};
 	}

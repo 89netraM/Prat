@@ -8,7 +8,7 @@
 		<Authors>Mårten Åsberg</Authors>
 		<PackageId>MoreTec_Prat</PackageId>
 		<Product>Prat</Product>
-		<Version>1.0.0</Version>
+		<Version>1.1.0</Version>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageTags>parsing parser</PackageTags>
 		<Title>Prat</Title>
@@ -17,4 +17,7 @@
 		<Description>Multipurpose parsing library in C#</Description>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 	</PropertyGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+	  <PackageReference Include="System.Memory" Version="4.5.3" />
+	</ItemGroup>
 </Project>

@@ -1,7 +1,9 @@
-﻿namespace Prat
+﻿using System;
+
+namespace Prat
 {
 	class Failure<T> : IParser<T>
 	{
-		public (T, string)? Parse(string s) => null;
+		public (T, ReadOnlyMemory<char>)? Parse(ReadOnlyMemory<char> s) => null;
 	}
 }

@@ -13,10 +13,10 @@ namespace Prat
 			Second = second ?? throw new ArgumentNullException(nameof(second));
 		}
 
-		public (T, string)? Parse(string s) => First.Value.Parse(s) switch
+		public (T, ReadOnlyMemory<char>)? Parse(ReadOnlyMemory<char> s) => First.Value.Parse(s) switch
 		{
 			null => Second.Value.Parse(s),
-			ValueTuple<T, string> t => t
+			ValueTuple<T, ReadOnlyMemory<char>> t => t
 		};
 	}
 }

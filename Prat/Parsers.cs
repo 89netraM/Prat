@@ -14,6 +14,16 @@ namespace Prat
 
 		#region Extensions
 		/// <summary>
+		/// Can be used as an entrypoint for using parsers.
+		/// <b>Should not be used internally for implementation of parsers.</b>
+		/// </summary>
+		public static (T, string)? Parse<T>(this IParser<T> @this, string str) => @this.Parse(str.AsMemory()) switch
+		{
+			null => null,
+			(T t, ReadOnlyMemory<char> cs) => (t, cs.ToString())
+		};
+
+		/// <summary>
 		/// Returns a modified parser to that uses <paramref name="func"/> to
 		/// transform the return value.
 		/// </summary>

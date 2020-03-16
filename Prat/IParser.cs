@@ -1,5 +1,5 @@
-﻿#if NETSTANDARD2_1
-using System;
+﻿using System;
+#if NETSTANDARD2_1
 using System.Collections.Generic;
 #endif
 
@@ -13,7 +13,7 @@ namespace Prat
 	/// <typeparam name="T">The type of the outputs from this parser.</typeparam>
 	public interface IParser<T>
 	{
-		(T, string)? Parse(string s);
+		(T, ReadOnlyMemory<char>)? Parse(ReadOnlyMemory<char> s);
 
 #if NETSTANDARD2_1
 		public static IParser<T> operator >(IParser<T> left, IParser<T> right) => Parsers.KeepRight(left, right);

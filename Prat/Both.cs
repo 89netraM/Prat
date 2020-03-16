@@ -13,9 +13,9 @@ namespace Prat
 			Right = right ?? throw new ArgumentNullException(nameof(right));
 		}
 
-		public (B, string)? Parse(string s) => Left.Value.Parse(s) switch
+		public (B, ReadOnlyMemory<char>)? Parse(ReadOnlyMemory<char> s) => Left.Value.Parse(s) switch
 		{
-			(_, string rest) => Right.Value.Parse(rest),
+			(_, ReadOnlyMemory<char> rest) => Right.Value.Parse(rest),
 			_ => null
 		};
 	}

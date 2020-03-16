@@ -1,8 +1,10 @@
-﻿namespace Prat
+﻿using System;
+
+namespace Prat
 {
 	class Item : IParser<char>
 	{
-		public (char, string)? Parse(string s)
+		public (char, ReadOnlyMemory<char>)? Parse(ReadOnlyMemory<char> s)
 		{
 			if (s.Length == 0)
 			{
@@ -10,7 +12,7 @@
 			}
 			else
 			{
-				return (s[0], s.Substring(1));
+				return (s.Span[0], s.Slice(1));
 			}
 		}
 	}

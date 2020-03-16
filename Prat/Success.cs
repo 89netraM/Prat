@@ -11,7 +11,7 @@ namespace Prat
 			A = a;
 		}
 
-		public (T, string)? Parse(string s)
+		public (T, ReadOnlyMemory<char>)? Parse(ReadOnlyMemory<char> s)
 		{
 			return (A.Value, s);
 		}
