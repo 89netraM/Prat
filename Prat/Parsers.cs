@@ -547,6 +547,49 @@ namespace Prat
 		{
 			return parserFactories.Aggregate(Success(Enumerable.Empty<T>()), (all, p) => Using(all, ts => p().Select(t => ts.Append(t))));
 		}
+
+		/// <summary>
+		/// Tries all parsers, and uses the one that could parse the longest.
+		/// </summary>
+		/// <remarks>
+		/// <b>Warning!</b> As this parser will try all provided parsers to determin
+		/// the best, it is expensive and best avoided.
+		/// </remarks>
+		/// <param name="parsers">A collection of parsers.</param>
+		public static IParser<T> Best<T>(IEnumerable<IParser<T>> parsers) => Best(parsers.ToArray());
+		/// <summary>
+		/// Tries all parsers, and uses the one that could parse the longest.
+		/// </summary>
+		/// <remarks>
+		/// <b>Warning!</b> As this parser will try all provided parsers to determin
+		/// the best, it is expensive and best avoided.
+		/// </remarks>
+		/// <param name="parsers">A collection of parsers.</param>
+		public static IParser<T> Best<T>(params IParser<T>[] parsers)
+		{
+			return new Best<T>(parsers.Select(ToLazy));
+		}
+		/// <summary>
+		/// Tries all parsers, and uses the one that could parse the longest.
+		/// </summary>
+		/// <remarks>
+		/// <b>Warning!</b> As this parser will try all provided parsers to determin
+		/// the best, it is expensive and best avoided.
+		/// </remarks>
+		/// <param name="parserFactories">A collection of parsers factories.</param>
+		public static IParser<T> Best<T>(IEnumerable<Func<IParser<T>>> parserFactories) => Best(parserFactories.ToArray());
+		/// <summary>
+		/// Tries all parsers, and uses the one that could parse the longest.
+		/// </summary>
+		/// <remarks>
+		/// <b>Warning!</b> As this parser will try all provided parsers to determin
+		/// the best, it is expensive and best avoided.
+		/// </remarks>
+		/// <param name="parserFactories">A collection of parsers factories.</param>
+		public static IParser<T> Best<T>(params Func<IParser<T>>[] parserFactories)
+		{
+			return new Best<T>(parserFactories.Select(ToLazy));
+		}
 		#endregion Combinatory
 	}
 }
